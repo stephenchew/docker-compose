@@ -1,0 +1,17 @@
+# Reference https://redis.io/docs/getting-started/install-stack/docker/
+version: '3.9'
+services:
+  redis_stack:
+    image: redis/redis-stack:latest
+    container_name: redis-stack
+    # Optional environment variables
+    # environment:
+    #   REDIS_ARGS: "--requirepass redis-stack"
+    ports:
+      - 6379:6379
+      - 8001:8001
+    volumes:
+      - /local-data/:/data
+      # example configuration
+      # - /home/user/redis/local-redis-stack.conf:/redis-stack.conf
+    restart: 'unless-stopped'
