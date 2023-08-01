@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  minideb:
+    image: minideb
+    container_name: vscode
+    network_mode: bridge
+    volumes:
+      - ~/docker-volumes/workspace:/home/dev/workspace
+    ports:
+      - 2222:22
+    restart: always

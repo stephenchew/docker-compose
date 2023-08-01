@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  influxdb:
+    image: influxdb:2.0
+    container_name: influxdb
+    network_mode: bridge
+    volumes:
+      - /srv/influxdb2:/var/lib/influxdb2
+    ports:
+      - 8086:8086
+    restart: always
