@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Asia/Kuala_Lumpur
+      SERVERURL: my.server.example.com
+      SERVERPORT: 51820
+      PEERS: my_iphone,my_macbook_pro # put in number for index-based peer
+      PEERDNS: 1.1.1.1,8.8.8.8
+      INTERNAL_SUBNET: 10.0.0.0
+      ALLOWEDIPS: 0.0.0.0/0
+    volumes:
+      - ./config:/config
+      # /lib/modules is only required if kernel is older than 5.6, as it uses
+      # - /lib/modules:/lib/modules
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
