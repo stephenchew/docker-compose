@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare_tunnel
+    command: tunnel --no-autoupdate run --token eyJXXX...
+    restart: unless-stopped
