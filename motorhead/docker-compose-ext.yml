@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  motorhead:
+    image: ghcr.io/getmetal/motorhead:latest
+    container_name: motorhead
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis_stack:6379
+    ports:
+      - 8080:8080
+    networks:
+      - redis-stack_lan
+  
+networks:
+  # Make sure a network named `redis-stack_lan` is created externally
+  redis-stack_lan:
+    external: true
