@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    command: ['serve', '--cache-file', '/var/cache/ntfy/cache.db']
+    ports:
+      - 80:80
+    volumes:
+      - /var/cache/ntfy:/var/cache/ntfy
+      - ./config:/etc/ntfy
+    restart: unless-stopped
