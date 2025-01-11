@@ -68,6 +68,22 @@ services:
       - 9696:9696
     restart: unless-stopped
 
+  bazarr:
+    container_name: bazarr
+    image: linuxserver/bazarr:latest
+    networks:
+      - entertainment
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuala_Lumpur
+    volumes:
+      - bazarr-config:/config
+      - torrent-downloads:/downloads
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
     container_name: jellyseerr
@@ -127,6 +143,7 @@ volumes:
   radarr-config:
   sonarr-config:
   prowlarr-config:
+  bazarr-config:
   jellyfin-config:
   qbittorrent-config:
   jellyseerr-config:
