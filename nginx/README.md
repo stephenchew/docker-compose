@@ -33,7 +33,7 @@ isn't expose or one does not own the domain name).
     1. Enter the docker with `docker exec -it nginx /bin/bash`
     2. Run `nginx -t && nginx -s reload`. It will check for the validity of the config file before reloading.
   
-    ### Outside of the docker container
+    #### Outside of the docker container
     1. Run `docker exec -it nginx bash -c 'nginx -t && nginx -s reload'`
   
 > ## Note
