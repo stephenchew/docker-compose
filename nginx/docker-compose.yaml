@@ -1,0 +1,12 @@
+services:
+  web:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - ./data/conf:/etc/nginx/conf.d
+      - ./data/snippets:/etc/nginx/snippets
+      - ./data/ssl:/etc/nginx/ssl
+      - ./data/private:/etc/ssl/private
+    ports:
+     - 80:80
+     - 443:443
