@@ -2,6 +2,7 @@ services:
   web:
     image: nginx
     container_name: nginx
+    restart: unless-stopped
     volumes:
       - ./data/conf:/etc/nginx/conf.d
       - ./data/snippets:/etc/nginx/snippets
